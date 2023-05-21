@@ -23,15 +23,13 @@ fn main() {
     };
 
     println!("");
-    println!("{:?}", rect);
+    println!("rect - {:?}", rect);
     println!("area : {} - area (method) : {}", area(&rect), rect.area());
 
     rect.width();
 
-    let other_rect = Rect {
-        height: 15,
-        width: 10,
-    };
+    let other_rect = Rect::square(10);
+    println!("other_rect - {:?}", other_rect);
 
     println!("rect can hold other_rect : {}", rect.can_hold(&other_rect));
 }
@@ -75,5 +73,11 @@ impl Rect {
     }
     fn can_hold(&self, other: &Rect) -> bool {
         self.width > other.width && self.height > other.height
+    }
+    fn square(size: u32) -> Rect {
+        Rect {
+            height: size,
+            width: size,
+        }
     }
 }
